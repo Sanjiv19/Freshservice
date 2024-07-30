@@ -1,0 +1,25 @@
+{
+    "freshservice_api_key": {
+      "display_name": "Freshservice API Key",
+      "description": "API Key for Freshservice",
+      "type": "text",
+      "required": true,
+      "default_value": "oQNQCWIsBSQsY18Ryeav"
+    },
+    "freshdesk_api_key": {
+      "display_name": "Freshdesk API Key",
+      "description": "API Key for Freshdesk",
+      "type": "text",
+      "required": true,
+      "default_value": "UvRK7bVILdhpGR5JJdiL"
+    },
+    "freshdesk_domain": {
+      "display_name": "Freshdesk Domain",
+      "description": "Domain of your Freshdesk account",
+      "type": "text",
+      "required": true,
+      "default_value": "effy-opinyin.freshdesk.com"
+    }
+  }
+  
+  
