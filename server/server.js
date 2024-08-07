@@ -1,5 +1,28 @@
-const btoa  = require("btoa"); // Import btoa from abab
+// server.js
+const express = require('express');
+const path = require('path');
+require('dotenv').config();
+const btoa = require("btoa");
 
+const app = express();
+
+// Middleware for parsing request bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Import and use the middleware
+const middlewareApp = require('./middleware/src/app.js');
+app.use('./middleware', middlewareApp);
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Define routes
+app.get('/', (req, res) => {
+  res.send('Welcome to the main server');
+});
+
+// Freshdesk Event Handler
 exports = {
   events: [
     {
@@ -12,8 +35,6 @@ exports = {
     const freshdeskApiKey = payload.iparams.freshdesk_api_key;
     const freshdeskDomain = payload.iparams.freshdesk_domain;
 
-    // console.log('Payload received:', JSON.stringify(payload, null, 2)); // Log the payload
-
     const incident = payload.data.ticket;
     const requester = payload.data.requester;
 
@@ -25,10 +46,8 @@ exports = {
 
     // Create a Freshdesk ticket
     const createFreshdeskTicket = async (incident, requester) => {
-      // Correct the Freshdesk URL
       const freshdeskUrl = `https://${freshdeskDomain}/api/v2/tickets`;
 
-      // Use btoa from abab for Base64 encoding
       const authString = `${freshdeskApiKey}`;
       const encodedAuth = btoa(authString + ":x");
       console.log(encodedAuth);
@@ -67,3 +86,9 @@ exports = {
     await createFreshdeskTicket(incident, requester);
   },
 };
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

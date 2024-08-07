@@ -4,14 +4,14 @@
       "description": "API Key for Freshservice",
       "type": "text",
       "required": true,
-      "default_value": "Your_FreshService_API_KEY"
+      "default_value": "oQNQCWIsBSQsY18Ryeav"
     },
     "freshdesk_api_key": {
       "display_name": "Freshdesk API Key",
       "description": "API Key for Freshdesk",
       "type": "text",
       "required": true,
-      "default_value": "Your_FreshDesk_API_KEY"
+      "default_value": "UvRK7bVILdhpGR5JJdiL"
     },
     "freshdesk_domain": {
       "display_name": "Freshdesk Domain",
